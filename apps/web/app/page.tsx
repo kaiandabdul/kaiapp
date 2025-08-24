@@ -1,5 +1,7 @@
 import Image, { type ImageProps } from "next/image";
 import { Button } from "@repo/ui/button";
+import { ConvexTest } from "@repo/ui/convex-test";
+import { ConvexStatus } from "@repo/ui/convex-status";
 import styles from "./page.module.css";
 
 type Props = Omit<ImageProps, "src"> & {
@@ -21,6 +23,11 @@ const ThemeImage = (props: Props) => {
 export default function Home() {
   return (
     <div className={styles.page}>
+      {/* Convex Status Indicator */}
+      <div style={{ position: 'absolute', top: '20px', right: '20px', zIndex: 1000 }}>
+        <ConvexStatus appName="web" />
+      </div>
+      
       <main className={styles.main}>
         <ThemeImage
           className={styles.logo}
@@ -66,6 +73,11 @@ export default function Home() {
         <Button appName="web" className={styles.secondary}>
           Open alert
         </Button>
+        
+        {/* Convex Database Connection Test */}
+        <div style={{ marginTop: '40px', padding: '20px', border: '2px solid #e5e7eb', borderRadius: '8px', backgroundColor: '#f9fafb' }}>
+          <ConvexTest appName="web" showDetails={true} />
+        </div>
       </main>
       <footer className={styles.footer}>
         <a

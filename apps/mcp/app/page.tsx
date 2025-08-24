@@ -1,8 +1,14 @@
 import Image from "next/image";
+import { ConvexTest } from "@repo/ui/convex-test";
+import { ConvexStatus } from "@repo/ui/convex-status";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
+    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 relative">
+      {/* Convex Status Indicator */}
+      <div className="absolute top-4 right-4 z-50">
+        <ConvexStatus appName="mcp" />
+      </div>
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <Image
           className="dark:invert"
@@ -49,6 +55,11 @@ export default function Home() {
           >
             Read our docs
           </a>
+        </div>
+        
+        {/* Convex Database Connection Test */}
+        <div className="mt-10 p-6 border-2 border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+          <ConvexTest appName="mcp" showDetails={true} />
         </div>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
