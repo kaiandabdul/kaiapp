@@ -5,7 +5,8 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**", "convex/_generated/**"]
+      "outputs": [".next/**", "!.next/cache/**", "convex/_generated/**"],
+      "env": ["CONVEX_DEPLOYMENT", "CONVEX_URL"]
     },
     "lint": {
       "dependsOn": ["^lint"]
